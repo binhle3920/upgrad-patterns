@@ -12,14 +12,16 @@ public class RestServiceGenerator {
 
     private static RestTemplate restTemplate;
 
-    private RestServiceGenerator()
-    {
+    private RestServiceGenerator() {
+        // Private constructor to prevent instantiation
     }
 
     public static RestTemplate GetInstance()
     {
-        // return restTemplate object if initialized already
-    	
+        // Return restTemplate object if initialized already
+        if (restTemplate != null) {
+            return restTemplate;
+        }
 
         // Initialize restTemplate. This is executed only once.
         restTemplate = new RestTemplateBuilder()
@@ -31,6 +33,7 @@ public class RestServiceGenerator {
                     })
                 .build();
         
-        //return restTemplate object
+        // Return restTemplate object
+        return restTemplate;
     }
 }
