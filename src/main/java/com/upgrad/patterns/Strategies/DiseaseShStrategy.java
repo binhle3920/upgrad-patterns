@@ -32,23 +32,13 @@ public class DiseaseShStrategy implements IndianDiseaseStat {
 
     @Override
     public String GetActiveCount() {
-    	//write a try catch block here
-    	
-    	//try block
-    	
-	    	//obtain response from the getDiseaseShResponseResponses() method
-	    	//store it in an object
-	    	
-    		//get the response using the getCases() method
-	    	//return the response after rounding it up to 0 decimal places
-    	
-    	
-    	//catch block
-    		//log the error
-    	
-    		//return null
-    	
-    	
+    	try {
+            DiseaseShResponse response = getDiseaseShResponseResponses();
+            return String.valueOf(Math.round(response.getCases()));
+        } catch (Exception e) {
+            logger.error("Error occurred while fetching disease count from disease-sh-io", e);
+            return null;
+        }
     }
 
     private DiseaseShResponse getDiseaseShResponseResponses() {
